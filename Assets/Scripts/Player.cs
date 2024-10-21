@@ -4,20 +4,28 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private float velocidadMovimiento = 0;
+    private float velocidadmovimiento = 0;
     CharacterController controller;
     private float movimiento;
     public GameObject Head;
     public float turnSpeed;
+    private Camera cam;
+    [SerializeField] private float smoothing;
+    private float velocidadRotacion;
+    private Animator anim;
 
 
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        anim = GetComponent<Animator>();
+        cam = Camera.main;
+       
+        
 
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+       
+        
     }
 
     // Update is called once per frame
@@ -26,14 +34,24 @@ public class Player : MonoBehaviour
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
         Vector2 input = new Vector2(h, v).normalized;
-        if (input.magnitude != 0)
+
+
+        if (input.sqrMagnitude > 0)
         {
-            float anguloRotacion = Mathf.Atan2(input.x, input.y) * Mathf.Rad2Deg + Camera.main.transform.rotation.eulerAngles.y;
+            float anguloRotacion = Mathf.Atan2(input.x, input.y) * Mathf.Rad2Deg + cam.transform.rotation.eulerAngles.y;
             transform.eulerAngles = new Vector3(0, anguloRotacion, 0);
+            Mathf.SmoothDampAngle(transform.eulerAngles.y, anguloRotacion, ref velocidadRotacion, smoothing);
+            Debug.Log(velocidadRotacion);
+
             Vector3 movimiento = Quaternion.Euler(0, anguloRotacion, 0) * Vector3.forward;
+            controller.Move(movimiento * 5 * Time.deltaTime);
+            anim.SetBool("Running", true);
         }
-        float y = Input.GetAxis("Mouse X") * turnSpeed;
-        Head.transform.eulerAngles = new Vector3(y, Head.transform.eulerAngles.y + y, 0);
+        else
+        {
+            anim.SetBool("Running", false);
+        }
+        
 
 
         // controller.Move(movimiento * velocidadMovimiento * Time.deltaTime);
