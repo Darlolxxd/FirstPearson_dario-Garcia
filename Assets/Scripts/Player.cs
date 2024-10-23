@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -47,7 +48,7 @@ public class Player : MonoBehaviour
             controller.Move(movimiento * 5 * Time.deltaTime);
             anim.SetBool("Running", true);
         }
-        else
+        else 
         {
             anim.SetBool("Running", false);
         }
