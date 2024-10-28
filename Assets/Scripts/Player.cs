@@ -11,9 +11,30 @@ public class Player : MonoBehaviour
     public GameObject Head;
     public float turnSpeed;
     private Camera cam;
-    [SerializeField] private float smoothing;
+    
     private float velocidadRotacion;
     private Animator anim;
+
+    private Vector3 movimientoVertical;
+
+    [SerializeField] private float smoothing;
+
+    [Header("Deteccion del suelo")]
+    [SerializeField] private GameObject pies;
+    [SerializeField]private float escalaGravedad;
+    [SerializeField] private float radioDeteccion;
+    [SerializeField] private LayerMask queEsSuelo;
+
+
+    [SerializeField] private float alturaSalto;
+    [SerializeField] private Vector3 moveDirection;
+    [SerializeField] private CharacterController Controller;
+    [SerializeField] private int speed = 0;
+
+
+    
+    
+
 
 
     // Start is called before the first frame update
@@ -22,11 +43,11 @@ public class Player : MonoBehaviour
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
         cam = Camera.main;
-       
         
 
-       
-        
+
+
+
     }
 
     // Update is called once per frame
@@ -46,16 +67,66 @@ public class Player : MonoBehaviour
 
             Vector3 movimiento = Quaternion.Euler(0, anguloRotacion, 0) * Vector3.forward;
             controller.Move(movimiento * 5 * Time.deltaTime);
-            anim.SetBool("Running", true);
+
+           
         }
-        else 
+        if(moveDirection == Vector3.zero)
         {
-            anim.SetBool("Running", false);
+            //Idle
+            anim.SetFloat("Speed", 0);
+        } 
+
+        else if (Input.GetKey(KeyCode.W))
+        {
+            anim.SetFloat("Speed",0.5f);
         }
+        else
+        {
+            //run
+            anim.SetFloat("Speed", 1);
+        }
+        moveDirection *= speed;
+         
         
+
+        AplicarGravedad();
+        DeteccionSuelo();
+
+
+
+
 
 
         // controller.Move(movimiento * velocidadMovimiento * Time.deltaTime);
+    }
+    private void AplicarGravedad()
+    {
+        movimientoVertical.y += escalaGravedad * Time.deltaTime;
+        controller.Move(movimientoVertical* Time.deltaTime);
+    }
+    private void DeteccionSuelo()
+    {
+        Collider[] collsDetectados = Physics.OverlapSphere(pies.transform.position, radioDeteccion, queEsSuelo);
+
+        if(collsDetectados.Length > 0)
+        {
+            movimientoVertical.y = 0;
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color= Color.green;
+        Gizmos.DrawSphere(pies.transform.position, radioDeteccion);
+    }
+
+    private void Saltar()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            movimientoVertical.y = Mathf.Sqrt(-2 * escalaGravedad * alturaSalto);
+            
+        }
     }
 
 }
