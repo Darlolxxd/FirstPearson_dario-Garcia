@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Vector3 moveDirection;
     [SerializeField] private CharacterController Controller;
     [SerializeField] private int speed = 0;
+    private Animator Animator;
 
 
     
@@ -76,14 +77,15 @@ public class Player : MonoBehaviour
             anim.SetFloat("Speed", 0);
         } 
 
-        else if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W))
         {
             anim.SetFloat("Speed",0.5f);
         }
-        else
+        else if (Input.GetKey(KeyCode.LeftShift))
         {
             //run
             anim.SetFloat("Speed", 1);
+            Animator.SetBool("run", true);
         }
         moveDirection *= speed;
          
@@ -128,5 +130,7 @@ public class Player : MonoBehaviour
             
         }
     }
+
+     
 
 }
