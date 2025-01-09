@@ -59,15 +59,9 @@ public class Player : MonoBehaviour
         Vector2 input = new Vector2(h, v).normalized;
 
 
-        if (input.sqrMagnitude > 0)
+        //if (input.sqrMagnitude > 0)
         {
-            float anguloRotacion = Mathf.Atan2(input.x, input.y) * Mathf.Rad2Deg + cam.transform.rotation.eulerAngles.y;
-            transform.eulerAngles = new Vector3(0, anguloRotacion, 0);
-            Mathf.SmoothDampAngle(transform.eulerAngles.y, anguloRotacion, ref velocidadRotacion, smoothing);
-            Debug.Log(velocidadRotacion);
-
-            Vector3 movimiento = Quaternion.Euler(0, anguloRotacion, 0) * Vector3.forward;
-            controller.Move(movimiento * 5 * Time.deltaTime);
+           
 
            
         }
@@ -80,6 +74,8 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.W))
         {
             anim.SetFloat("Speed",0.5f);
+            Animator.SetBool("walk", true);
+
         }
         else if (Input.GetKey(KeyCode.LeftShift))
         {
