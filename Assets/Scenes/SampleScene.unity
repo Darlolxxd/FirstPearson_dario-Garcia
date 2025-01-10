@@ -290,10 +290,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e914f28575c4d44298c3264f34b1f72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 0}
+  player: {fileID: 0}
+  Animator: {fileID: 0}
   attackPoint: {fileID: 0}
   radioAtaque: 0
   queEsDanhable:
-    serializedVersion: 2
     m_Bits: 0
 --- !u!1 &253162961 stripped
 GameObject:
@@ -1276,31 +1278,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2059779379}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &838956716
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 838956713}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ae9192b29dadca46b8cf8334ded9d20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Head: {fileID: 0}
-  turnSpeed: 0
-  smoothing: 0
-  pies: {fileID: 348553392}
-  escalaGravedad: 0
-  radioDeteccion: 0.5
-  queEsSuelo:
-    serializedVersion: 2
-    m_Bits: 8
-  alturaSalto: 2
-  moveDirection: {x: 0, y: 0, z: 0}
-  Controller: {fileID: 838956718}
-  speed: 5
 --- !u!143 &838956718
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1318,7 +1295,7 @@ CharacterController:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Height: 2
   m_Radius: 0.5
@@ -1399,6 +1376,21 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &838956724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 838956713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccd9f0cf1c47a8d40acaae0d397c1413, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  mouseSensitivity: 2
+  Controller: {fileID: 838956718}
 --- !u!1 &910989992 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8708359041386985804, guid: df70b24d0691a95439f7f1794618b585,
@@ -2881,6 +2873,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 8092997810506529643, guid: df70b24d0691a95439f7f1794618b585, type: 3}
+--- !u!1 &1692728960 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 957506168400746, guid: 7ee6bd4a34d1217458bd869e9928e92a,
+    type: 3}
+  m_PrefabInstance: {fileID: 2059779379}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1692728963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692728960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82bf3b9e32f7ad943a9fb62db2be329a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  mouseSensitivity: 2
 --- !u!1 &1703898095
 GameObject:
   m_ObjectHideFlags: 3
@@ -3812,6 +3824,11 @@ PrefabInstance:
       objectReference: {fileID: 9000000, guid: 0e1e29b35a3700748811d120b13ed8d6, type: 3}
     - target: {fileID: 588854396716394453, guid: 7ee6bd4a34d1217458bd869e9928e92a,
         type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 588854396716394453, guid: 7ee6bd4a34d1217458bd869e9928e92a,
+        type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 40f5c493f122dcc42a2e83572d36653b, type: 2}
@@ -3900,7 +3917,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1297314268777055392, guid: 7ee6bd4a34d1217458bd869e9928e92a,
         type: 3}
       insertIndex: 1
-      addedObject: {fileID: 838956716}
+      addedObject: {fileID: 838956724}
     - targetCorrespondingSourceObject: {fileID: 1297314268777055392, guid: 7ee6bd4a34d1217458bd869e9928e92a,
         type: 3}
       insertIndex: -1
@@ -3917,6 +3934,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 838956722}
+    - targetCorrespondingSourceObject: {fileID: 957506168400746, guid: 7ee6bd4a34d1217458bd869e9928e92a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1692728963}
   m_SourcePrefab: {fileID: 100100000, guid: 7ee6bd4a34d1217458bd869e9928e92a, type: 3}
 --- !u!1 &2115424777 stripped
 GameObject:
