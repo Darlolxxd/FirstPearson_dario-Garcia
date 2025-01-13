@@ -19,7 +19,7 @@ public class Bala : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemigo"))
         {
-            print("hit" + collision.gameObject.name +" ! ");
+            print("hit" + collision.gameObject.name +" Enemigo ");
             Destroy(gameObject);
 
         }

@@ -71,6 +71,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 3136660199895482820}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1ef002a910cae5846a4c580cda80b824,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -1633474634855748795}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1ef002a910cae5846a4c580cda80b824,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8907474232435615988}
   m_SourcePrefab: {fileID: 100100000, guid: 1ef002a910cae5846a4c580cda80b824, type: 3}
 --- !u!1 &1470222008993649555 stripped
 GameObject:
@@ -90,3 +98,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80c577e8ba3c03045be942bc11911a32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &-1633474634855748795
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470222008993649555}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.040625
+  m_Height: 0.027500002
+  m_Direction: 1
+  m_Center: {x: 1.4062067e-25, y: 0, z: -0.010624997}
+--- !u!54 &8907474232435615988
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470222008993649555}
+  serializedVersion: 4
+  m_Mass: 0.3
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 112
+  m_CollisionDetection: 2

@@ -303,6 +303,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 94951882}
+  - component: {fileID: 94951883}
   m_Layer: 0
   m_Name: balaSpawn
   m_TagString: Untagged
@@ -319,12 +320,24 @@ Transform:
   m_GameObject: {fileID: 94951881}
   serializedVersion: 2
   m_LocalRotation: {x: -0.0000000018626445, y: -0, z: 1.1641528e-10, w: 1}
-  m_LocalPosition: {x: -0.084, y: 0.118, z: 1.039}
+  m_LocalPosition: {x: -0.084, y: 0.127, z: 1.074}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1133245163}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &94951883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 94951881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80c577e8ba3c03045be942bc11911a32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &174432201 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1233007867409995089, guid: df70b24d0691a95439f7f1794618b585,
@@ -1400,6 +1413,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1674068008}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f954e9cda27fcb84f93fa311b575ee13,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1674068009}
   m_SourcePrefab: {fileID: 100100000, guid: f954e9cda27fcb84f93fa311b575ee13, type: 3}
 --- !u!1 &650848602
 GameObject:
@@ -2849,37 +2866,37 @@ PrefabInstance:
     - target: {fileID: -3554015309324543282, guid: df70b24d0691a95439f7f1794618b585,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -39.975
+      value: -39.907
       objectReference: {fileID: 0}
     - target: {fileID: -3554015309324543282, guid: df70b24d0691a95439f7f1794618b585,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.41
+      value: 0.40999997
       objectReference: {fileID: 0}
     - target: {fileID: -3554015309324543282, guid: df70b24d0691a95439f7f1794618b585,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -36.221
+      value: -36.243
       objectReference: {fileID: 0}
     - target: {fileID: -3554015309324543282, guid: df70b24d0691a95439f7f1794618b585,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.18932948
+      value: 0.06449253
       objectReference: {fileID: 0}
     - target: {fileID: -3554015309324543282, guid: df70b24d0691a95439f7f1794618b585,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.1893295
+      value: -0.064492546
       objectReference: {fileID: 0}
     - target: {fileID: -3554015309324543282, guid: df70b24d0691a95439f7f1794618b585,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.6812888
+      value: -0.7041597
       objectReference: {fileID: 0}
     - target: {fileID: -3554015309324543282, guid: df70b24d0691a95439f7f1794618b585,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.6812888
+      value: -0.70415956
       objectReference: {fileID: 0}
     - target: {fileID: -3554015309324543282, guid: df70b24d0691a95439f7f1794618b585,
         type: 3}
@@ -2889,7 +2906,7 @@ PrefabInstance:
     - target: {fileID: -3554015309324543282, guid: df70b24d0691a95439f7f1794618b585,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -148.939
+      value: -169.534
       objectReference: {fileID: 0}
     - target: {fileID: -2843045731040922206, guid: df70b24d0691a95439f7f1794618b585,
         type: 3}
@@ -4220,6 +4237,27 @@ MonoBehaviour:
   balaSpawn: {fileID: 94951882}
   balaVelocity: 30
   balaPrefabLifeTime: 3
+--- !u!65 &1674068009
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674068007}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.12, y: 0.28, z: 0.89}
+  m_Center: {x: 0, y: 0, z: 0.16}
 --- !u!1 &1692728960 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 957506168400746, guid: 7ee6bd4a34d1217458bd869e9928e92a,
@@ -4603,7 +4641,7 @@ PrefabInstance:
     - target: {fileID: 2356958653308694819, guid: ef26b2dc882f2d741b1e5521ca67f8ef,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.18099332
+      value: 0.13
       objectReference: {fileID: 0}
     - target: {fileID: 2356958653308694819, guid: ef26b2dc882f2d741b1e5521ca67f8ef,
         type: 3}
