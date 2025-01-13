@@ -8,13 +8,15 @@ public class PlayerMovement : MonoBehaviour
     public float mouseSensitivity = 2f;
     private float verticalRotation = 0f;
     private Animator animator;
-    [SerializeField] private CharacterController Controller;
+    [SerializeField] private float gravity;
+    private CharacterController controller;
 
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>(); // Obtiene el componente Animator
+        controller = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
@@ -44,7 +46,8 @@ public class PlayerMovement : MonoBehaviour
 
         // Normaliza la dirección de movimiento y aplica la velocidad
         moveDirection.Normalize();
-        transform.Translate(moveDirection * speed * Time.deltaTime, Space.World);
+        //transform.Translate(moveDirection * speed * Time.deltaTime, Space.World);
+        controller.Move(moveDirection * speed * Time.deltaTime);
 
         // Actualiza el parámetro Speed en el Animator
         animator.SetFloat("Speed", moveDirection.magnitude); // Establece el parámetro Speed

@@ -8,7 +8,7 @@ public class HacerDaño : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     { 
-        if(other.CompareTag("player") && other.GetComponent<VidaPersonaje>())
+        if(other.CompareTag("Player") && other.GetComponent<VidaPersonaje>())
         {
             other.GetComponent<VidaPersonaje>().RecibirDaño(CantidadDaño);
         }

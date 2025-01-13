@@ -13,6 +13,7 @@ public class Enemigo : MonoBehaviour
 
     public GameObject target;
     public bool atacando;
+    public float Health = 100f;
     
 
     private void Start()
@@ -28,7 +29,7 @@ public class Enemigo : MonoBehaviour
             cronometro += 1 * Time.deltaTime;
             if (cronometro >= 4)
             {
-                rutina = Random.Range(0, 2);
+                rutina = Random.Range(0, 3);
                 cronometro = 0;
             }
             switch (rutina)
@@ -89,6 +90,17 @@ public class Enemigo : MonoBehaviour
     {
         ani.SetBool("attack", false);
         atacando = false;
+    }
+    public void TakeDamage(float amount)
+    {
+        if (Health <= 0)
+        {
+            Die();
+        }
+    }
+    void Die()
+    {
+        Destroy(gameObject);
     }
 
     // Update is called once per frame
