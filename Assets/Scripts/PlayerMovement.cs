@@ -76,5 +76,12 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("speed", 1);
         }
     }
+    void OnTriggerEnter(Collider coll)
+    {
+       if (coll.CompareTag("arma"))
+        {
+            print("Daño");
+        }
+    }
 
 }

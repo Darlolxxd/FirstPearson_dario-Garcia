@@ -53,7 +53,7 @@ public class Advancedoors : MonoBehaviour
         inReach = false;
         doorisClosed = true;
         doorisOpen = false;
-        closeText.SetActive(false);
+       // closeText.SetActive(false);
         openText.SetActive(false );
     }
 
