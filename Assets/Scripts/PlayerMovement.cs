@@ -62,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
             moveDirection += transform.right;
         }
 
+
         // Normalize the movement direction and apply speed
         moveDirection.Normalize();
         controller.Move((moveDirection * speed * Time.deltaTime) + velocity * Time.deltaTime); // Apply movement and jump
@@ -92,10 +93,10 @@ public class PlayerMovement : MonoBehaviour
             // Walk
             animator.SetFloat("speed", 0.5f);
         }
-        else
+        else if (Input.GetKey(KeyCode.LeftShift))
         {
             // Run
-            animator.SetFloat("speed", 1);
+            animator.SetFloat("speed", 0.5f);
         }
     }
 
