@@ -6,15 +6,13 @@ public class PlayerGun : MonoBehaviour
 {
     public GameObject balaPrefab;
     public Transform balaSpawn;
-    public float balaVelocity = 30;
+    public float balaVelocity = 30f; // Adjust this value to control bullet speed
     public float balaPrefabLifeTime = 3f;
-    private float delay;
-
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -25,21 +23,26 @@ public class PlayerGun : MonoBehaviour
             FireWeapon();
         }
     }
+
     private void FireWeapon()
     {
-        //Instantiate the bullet
-        GameObject bala = Instantiate(balaPrefab, balaSpawn.position, Quaternion.identity);
-        //Shoot the bullet
-        bala.GetComponent<Rigidbody>().AddForce(balaSpawn.forward.normalized * balaVelocity, ForceMode.Impulse);
-        //Destroy the bullet after some time
+        // Instantiate the bullet
+        GameObject bala = Instantiate(balaPrefab, balaSpawn.position, balaSpawn.rotation); // Use balaSpawn.rotation for correct orientation
+
+        // Shoot the bullet
+        Rigidbody rb = bala.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.AddForce(balaSpawn.forward * balaVelocity, ForceMode.Impulse); // Use forward direction
+        }
+
+        // Destroy the bullet after some time
         StartCoroutine(DestroyBalaAfterTime(bala, balaPrefabLifeTime));
-
-
     }
+
     private IEnumerator DestroyBalaAfterTime(GameObject bala, float prefabBalaLifeTime)
     {
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(prefabBalaLifeTime); // Use prefabBalaLifeTime for the delay
         Destroy(bala);
     }
-   
 }

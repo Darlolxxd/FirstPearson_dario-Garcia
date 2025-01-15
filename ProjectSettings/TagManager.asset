@@ -7,6 +7,7 @@ TagManager:
   - Reach
   - arma
   - Enemigo
+  - Bullet
   layers:
   - Default
   - TransparentFX

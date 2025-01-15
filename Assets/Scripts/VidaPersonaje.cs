@@ -22,6 +22,10 @@ public class VidaPersonaje : MonoBehaviour
     {
         BarraSalud.fillAmount = Salud / SaludMaxima;
         TextoSalud.text = "+  " + Salud.ToString("f0");
+        if(Salud <= 0)
+        {
+            GameOverManager.TriggerGameOver();
+        }
     }
     public void RecibirDaño(float daño)
     {

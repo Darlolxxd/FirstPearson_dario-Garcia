@@ -8,83 +8,102 @@ public class PlayerMovement : MonoBehaviour
     public float mouseSensitivity = 2f;
     private float verticalRotation = 0f;
     private Animator animator;
-    [SerializeField] private float gravity;
+    [SerializeField] private float gravity = -9.81f; // Gravity value
+    [SerializeField] private float jumpHeight = 2f; // Height of the jump
     private CharacterController controller;
-
+    private Vector3 velocity; // To store the player's velocity
+    private bool isGrounded; // To check if the player is on the ground
 
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponent<Animator>(); // Obtiene el componente Animator
+        animator = GetComponent<Animator>(); // Get the Animator component
         controller = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Movimiento del jugador usando teclas W, A, S, D
+        // Check if the player is grounded
+        isGrounded = controller.isGrounded;
+
+        // Reset the vertical velocity if grounded
+        if (isGrounded && velocity.y < 0)
+        {
+            velocity.y = 0f;
+        }
+
+        // Jumping
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
+            velocity.y += Mathf.Sqrt(jumpHeight * -2f * gravity); // Calculate jump velocity
+        }
+
+        // Apply gravity
+        velocity.y += gravity * Time.deltaTime;
+
+        // Player movement using W, A, S, D keys
         Vector3 moveDirection = Vector3.zero;
 
-        if (Input.GetKey(KeyCode.W)) // Mover hacia adelante
+        if (Input.GetKey(KeyCode.W)) // Move forward
         {
             moveDirection += transform.forward;
-           
-            // Avanza en la dirección hacia donde está mirando
         }
-        if (Input.GetKey(KeyCode.S)) // Mover hacia atrás
+        if (Input.GetKey(KeyCode.S)) // Move backward
         {
-            moveDirection -= transform.forward; // Retrocede en la dirección opuesta
+            moveDirection -= transform.forward;
         }
-        if (Input.GetKey(KeyCode.A)) // Mover a la izquierda
+        if (Input.GetKey(KeyCode.A)) // Move left
         {
-            moveDirection -= transform.right; // Se mueve a la izquierda
+            moveDirection -= transform.right;
         }
-        if (Input.GetKey(KeyCode.D)) // Mover a la derecha
+        if (Input.GetKey(KeyCode.D)) // Move right
         {
-            moveDirection += transform.right; // Se mueve a la derecha
+            moveDirection += transform.right;
         }
 
-        // Normaliza la dirección de movimiento y aplica la velocidad
+        // Normalize the movement direction and apply speed
         moveDirection.Normalize();
-        //transform.Translate(moveDirection * speed * Time.deltaTime, Space.World);
-        controller.Move(moveDirection * speed * Time.deltaTime);
+        controller.Move((moveDirection * speed * Time.deltaTime) + velocity * Time.deltaTime); // Apply movement and jump
 
-        // Actualiza el parámetro Speed en el Animator
-        animator.SetFloat("Speed", moveDirection.magnitude); // Establece el parámetro Speed
+        // Update the Speed parameter in the Animator
+        animator.SetFloat("Speed", moveDirection.magnitude); // Set the Speed parameter
 
-        // Rotación del ratón
+        // Mouse rotation
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
         verticalRotation -= mouseY;
         verticalRotation = Mathf.Clamp(verticalRotation, -90f, 90f);
 
-        // Aplica la rotación vertical a la cámara
+        // Apply vertical rotation to the camera
         Camera.main.transform.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
 
-        // Rota el jugador en el eje Y
+        // Rotate the player on the Y-axis
         transform.Rotate(0, mouseX, 0);
-        if(moveDirection == Vector3.zero)
+
+        // Update animator speed based on movement
+        if (moveDirection == Vector3.zero)
         {
             animator.SetFloat("speed", 0);
         }
         else if (Input.GetKey(KeyCode.W))
         {
-            //walk
+            // Walk
             animator.SetFloat("speed", 0.5f);
         }
         else
         {
-            //run
+            // Run
             animator.SetFloat("speed", 1);
         }
     }
+
     void OnTriggerEnter(Collider coll)
     {
-       if (coll.CompareTag("arma"))
+        if (coll.CompareTag("arma"))
         {
             print("Daño");
         }
     }
-
 }

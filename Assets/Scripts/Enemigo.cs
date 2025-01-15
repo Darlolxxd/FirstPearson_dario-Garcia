@@ -91,15 +91,26 @@ public class Enemigo : MonoBehaviour
         ani.SetBool("attack", false);
         atacando = false;
     }
-    public void TakeDamage(float amount)
+    void OnTriggerEnter(Collider coll)
     {
-        if (Health <= 0)
+        if (coll.CompareTag("Bullet"))
+        {
+            print("Daño");
+        }
+    }
+    public void TakeDamage(float damage)
+    {
+        Health -= damage;
+        Debug.Log("Enemigo took damage! Health: " + Health);
+
+        if (Health < 0f)
         {
             Die();
         }
     }
     void Die()
     {
+        Debug.Log("Enemigo died!");
         Destroy(gameObject);
     }
 
