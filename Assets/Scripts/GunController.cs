@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class GunController : MonoBehaviour
 {
-    public Transform firePoint;
+    public GameObject firePoint;
+    // Reference to the Prefab. Drag a Prefab into this field in the Inspector
     public GameObject bulletPrefab;
-    public float shootRate = 0.1f;
-    private float nextShotTime = 0f;
+
     public AudioSource audioSource;
     public AudioClip shootSound;
 
-    
+    private GameObject newBullet;
+    private float bulletSpeed = 0.1f; 
+    private float shootInterval = 0.1f;
+    private float myTime = 0.0f;
+    private float nextShotTime = 0.0f; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,19 +31,25 @@ public class GunController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButton("Fire1") && Time.time >= nextShotTime + shootRate)
+        myTime = myTime + Time.deltaTime;
+        // Dispara si se pulsa el botón izquierdo del ratón y ha pasado el intervado entre disparos
+        if (Input.GetMouseButtonDown(0) && myTime >= nextShotTime)
         {
+            Debug.Log("Time to shoot . ");
+            nextShotTime = myTime + shootInterval;
             shoot();
-            nextShotTime = Time.time + shootRate;
-        }
-        if (!audioSource.isPlaying)
-        {
-            audioSource.PlayOneShot(shootSound);
         }
     }
     void shoot()
     {
-        Debug.Log("player is shooting!");
-        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Debug.Log("GunController: Bullet departing !");
+       // Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        newBullet = Instantiate(bulletPrefab, firePoint.transform.position, firePoint.transform.rotation) as GameObject;
+        Rigidbody rb = newBullet.GetComponent<Rigidbody>();
+        rb.AddForce(transform.forward * bulletSpeed, ForceMode.VelocityChange);
+        if (audioSource != null)
+        {
+          audioSource.Play();
+        }         
     }
 }

@@ -68,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
         controller.Move((moveDirection * speed * Time.deltaTime) + velocity * Time.deltaTime); // Apply movement and jump
 
         // Update the Speed parameter in the Animator
-        animator.SetFloat("Speed", moveDirection.magnitude); // Set the Speed parameter
+        animator.SetFloat("speed", moveDirection.magnitude); // Set the Speed parameter
 
         // Mouse rotation
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
@@ -104,7 +104,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (coll.CompareTag("arma"))
         {
-            print("Daño");
+            Debug.Log("PlayerMovement, arma collision detected.");
+        } 
+        else if (coll.CompareTag("Enemigo"))
+        {
+            Debug.Log("PlayerMovement, damage by enemy detected.");
         }
+                            
     }
 }

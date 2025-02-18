@@ -4,21 +4,23 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-
-    public float speed = 20f;
-    public float damage = 10f;
-    public float lifetime = 5f;
+    public float speed = 1f;
+    public float damage = 25f;
+    public float lifetime = 100f;
     
     // Start is called before the first frame update
     private void Start()
     {
-        Destroy(gameObject, lifetime);
+      //  Destroy(gameObject, lifetime);
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        if (gameObject != null)
+        {
+            transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -30,7 +32,10 @@ public class Bullet : MonoBehaviour
             {
                 enemigo.TakeDamage(damage);
 
-            }
+            }    
+        }
+        if (gameObject != null)
+        {
             Destroy(gameObject);
         }
     }

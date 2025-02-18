@@ -25,7 +25,7 @@ public class Enemigo : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, target.transform.position) > 5)
         {
-            ani.SetBool("run", false);
+            ani.SetBool("walk", false);
             cronometro += 1 * Time.deltaTime;
             if (cronometro >= 4)
             {
@@ -73,19 +73,9 @@ public class Enemigo : MonoBehaviour
                 
 
             }
-        }
-        
-
-
-
-            
-        
-
-
-
-        
-       
+        }   
     }
+
     public void Final_Ani()
     {
         ani.SetBool("attack", false);
@@ -95,23 +85,28 @@ public class Enemigo : MonoBehaviour
     {
         if (coll.CompareTag("Bullet"))
         {
-            print("Daño");
+            Health -= 20.0f;
+            print("From Enemigo: Daño recibido.");
         }
     }
     public void TakeDamage(float damage)
-    {
+    {  
+        Debug.Log("From Enemigo: damage taken! Health: " + Health + "Damage: "+ damage);
         Health -= damage;
-        Debug.Log("Enemigo took damage! Health: " + Health);
-
         if (Health < 0f)
         {
+            ani.SetBool("death", true);
             Die();
         }
     }
+
     void Die()
     {
-        Debug.Log("Enemigo died!");
-        Destroy(gameObject);
+        Debug.Log("From Enemigo: Enemigo died!");
+        if (gameObject != null)
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame
