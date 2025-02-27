@@ -15,9 +15,12 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController controller;
     private Vector3 velocity; // To store the player's velocity
     private bool isGrounded; // To check if the player is on the ground
+    [SerializeField] private GameObject[] Weapon;
+    [SerializeField] private bool[] tieneWeapon;
+    bool estaCambiandoWeapon = false;
 
-   
-    
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -103,6 +106,15 @@ public class PlayerMovement : MonoBehaviour
             // Run
             animator.SetFloat("speed", 0.5f);
         }
+        int Weapon = -1;
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            Weapon = 0;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            Weapon = 1;
+        }
     }
 
     void OnTriggerEnter(Collider coll)
@@ -117,6 +129,7 @@ public class PlayerMovement : MonoBehaviour
         }
                             
     }
+
     
 }
 
