@@ -93,7 +93,7 @@ public class Enemigo : MonoBehaviour
     {  
         Debug.Log("From Enemigo: damage taken! Health: " + Health + "Damage: "+ damage);
         Health -= damage;
-        if (Health < 0f)
+        if (Health <=0)
         {
             ani.SetBool("death", true);
             Die();

@@ -1414,12 +1414,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: f954e9cda27fcb84f93fa311b575ee13,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.24
+      value: -0.006
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f954e9cda27fcb84f93fa311b575ee13,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.1
+      value: 0.237
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f954e9cda27fcb84f93fa311b575ee13,
         type: 3}
@@ -1473,6 +1473,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 428227633}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: f954e9cda27fcb84f93fa311b575ee13,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1751029870}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f954e9cda27fcb84f93fa311b575ee13,
         type: 3}
@@ -2748,7 +2752,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1251570073}
-  - {fileID: 1751029870}
   - {fileID: 1474962302}
   m_Father: {fileID: 330585546}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4591,8 +4594,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.14263749, y: 0.23522687, z: 0.18836679}
-  m_Center: {x: 0.5939422, y: 1.0092549, z: 0.06657534}
+  m_Size: {x: 0.392269, y: 0.3388175, z: 0.33286506}
+  m_Center: {x: 0.575129, y: 1.0610486, z: 0.13882446}
 --- !u!114 &1649934582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5244,7 +5247,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1751029870
 Transform:
   m_ObjectHideFlags: 0
@@ -5253,12 +5256,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1751029869}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.076, y: -2.1, z: 4.5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.0000000055879315, y: -0, z: 1.1641524e-10, w: 1}
+  m_LocalPosition: {x: -0.0032633475, y: 0.075058095, z: 0.6243952}
+  m_LocalScale: {x: 0.543899, y: 0.5438989, z: 0.5438988}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1133245163}
+  m_Father: {fileID: 1251570073}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1758005228 stripped
 GameObject:
@@ -6930,13 +6933,18 @@ PrefabInstance:
       objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 5954487068233489361, guid: 71eb77a2402165c4ea9ed394e12ad7c5,
         type: 3}
+      propertyPath: m_Radius
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5954487068233489361, guid: 71eb77a2402165c4ea9ed394e12ad7c5,
+        type: 3}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7678543460333870927, guid: 71eb77a2402165c4ea9ed394e12ad7c5,
         type: 3}
       propertyPath: m_Mass
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7678543460333870927, guid: 71eb77a2402165c4ea9ed394e12ad7c5,
         type: 3}
@@ -6947,6 +6955,11 @@ PrefabInstance:
         type: 3}
       propertyPath: speed
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596912208622484337, guid: 71eb77a2402165c4ea9ed394e12ad7c5,
+        type: 3}
+      propertyPath: damage
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 8596912208622484337, guid: 71eb77a2402165c4ea9ed394e12ad7c5,
         type: 3}
@@ -7021,6 +7034,11 @@ PrefabInstance:
     - target: {fileID: 9088479323494403470, guid: 71eb77a2402165c4ea9ed394e12ad7c5,
         type: 3}
       propertyPath: m_Name
+      value: Bullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088479323494403470, guid: 71eb77a2402165c4ea9ed394e12ad7c5,
+        type: 3}
+      propertyPath: m_TagString
       value: Bullet
       objectReference: {fileID: 0}
     m_RemovedComponents: []
